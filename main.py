@@ -19,12 +19,12 @@ def print_board(board):
 def get_user_input(board, player):
   print("Player {}".format(player))
   row = int(input("Enter a number for the row: "))
-  while(0 < row > 2):
+  # After confirming the value is int-worthy, cast it to int
+  while(0 > row or row > 2):
     print("Try again with numbers on the board")
     row = int(input("Enter row: "))
-  # LATER: create a error handler for when user gives a non-number value
   col = int(input("Enter a number for the column: "))
-  while(0 < col > 2):
+  while(0 > col or col > 2):
     print("Try again with numbers on the board")
     col = int(input("Enter a number for the column: "))
   index = row * 3 + col
@@ -65,6 +65,7 @@ def main():
     count += 1
     if count > 8:
       play_game = False
+      print_board(board)
       print("Tie Game")
     if player == 1:
       player = 2
